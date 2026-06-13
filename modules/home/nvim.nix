@@ -32,7 +32,6 @@
 		plugins.lsp = {
 			enable = true;
 			servers = {
-				rust_analyzer.enable = true;
 				clangd.enable = true;
 				lua_ls.enable = true;
 				pyright.enable = true;
