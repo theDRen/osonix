@@ -2,9 +2,6 @@
 	description = "The OS of Nix";
 
 	inputs = {
-		disko.url = "github:nix-community/disko";
-		disko.inputs.nixpkgs.follows = "nixpkgs";
-
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
 		nixvim.url = "github:nix-community/nixvim";
@@ -22,8 +19,6 @@
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
-				inputs.disko.nixosModules.disko
-				./modules/nixos/disko.nix
 				inputs.niri.nixosModules.niri
 				inputs.home-manager.nixosModules.home-manager
 				./configuration.nix
@@ -37,6 +32,9 @@
 				({ pkgs, ... }: {
 					nix.settings.experimental-features = [ "nix-command" "flakes" ];
 					environment.systemPackages = [ pkgs.git ];
+
+					boot.postBootCommands = "mount -o remount,size=32G /nix/.rw-store";
+					zramSwap.enable = true;
 				})
 			];
 		};
