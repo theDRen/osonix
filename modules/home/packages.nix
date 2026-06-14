@@ -31,6 +31,7 @@
 		wf-recorder
 		wget
 		xdg-utils
+		xwayland-satellite
 		yt-dlp
 	];
 }

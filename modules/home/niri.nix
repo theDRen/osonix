@@ -2,7 +2,10 @@
 
 {
 	programs.niri.settings.layout.focus-ring.width = 2;
+	# XWayland bridge so X11 apps (Steam, etc.) have a display to connect to.
+	programs.niri.settings.environment.DISPLAY = ":0";
 	programs.niri.settings.spawn-at-startup = [
+		{ command = [ "xwayland-satellite" ":0" ]; }
 		{ command = [ "discord" ]; }
 		{ command = [ "vivaldi" ]; }
 		{ command = [ "steam" ]; }
