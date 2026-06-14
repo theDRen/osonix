@@ -25,6 +25,7 @@
 		retroarch-full
 		slurp
 		solaar
+		teams-for-linux
 		tiled
 		tldr
 		vivaldi
