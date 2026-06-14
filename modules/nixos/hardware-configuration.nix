@@ -11,26 +11,7 @@
 	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
 
-	# Filesystems on /dev/nvme0n1 (referenced by UUID so device order can't break boot).
-	fileSystems."/" = {
-		device = "/dev/disk/by-uuid/71a72ee7-8b56-4d81-8f3c-255c45451172";
-		fsType = "ext4";
-	};
-
-	fileSystems."/boot" = {
-		device = "/dev/disk/by-uuid/9775-970A";
-		fsType = "vfat";
-		options = [ "fmask=0077" "dmask=0077" ];
-	};
-
-	fileSystems."/home" = {
-		device = "/dev/disk/by-uuid/019e7a19-8fc5-4d4e-9172-539d1b6400c9";
-		fsType = "ext4";
-	};
-
-	# No on-disk swap partition; using zram (configured below).
-	swapDevices = [ ];
-	zramSwap.enable = true;
+	# Partitioning + all fileSystems/swap are declared by disko (./disko.nix).
 
 	networking.useDHCP = lib.mkDefault true;
 
