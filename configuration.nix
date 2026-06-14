@@ -1,7 +1,8 @@
 {config, pkgs, inputs, ... }:
 
 {
-	imports = [ 
+	imports = [
+		./modules/nixos/hardware-configuration.nix
 		./modules/nixos/system.nix
 		./modules/nixos/desktop.nix
 		./modules/nixos/audio.nix
